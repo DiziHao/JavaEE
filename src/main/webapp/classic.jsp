@@ -32,7 +32,7 @@
     </table>
     <hr/>
     当前的时间是：
-    <%--下面是使用表达式的例子 --%>
+    <%--下面是使用表达式的例子 address http://192.168.31.1805:8080/classic.<%@attribute name="" type="" required=""%>--%>
     <%=getDate()%>
 </div>
 </body>

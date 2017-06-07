@@ -1,5 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
+<%@ page import="com.mysql.jdbc.Driver" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.PreparedStatement" %>
+Created by IntelliJ IDEA.
   User: 邸子豪
   Date: 2017/6/7
   Time: 10:22
@@ -14,6 +17,24 @@
 <%
     String nick = request.getParameter("nick");
     out.println(nick);
+    String mobile = request.getParameter("mobile");
+    out.println(mobile);
+    String password = request.getParameter("password");
+    out.println(password);
+
+    new Driver();
+    Connection connection = DriverManager.getConnection("jdbc:mysql:///?user=root&password=system");
+    String sql = "INSERT INTO db_javaEE.user VALUE(NULL,?,?,?)";
+    PreparedStatement statement = connection.prepareStatement(sql);
+    statement.setString(1,nick);
+    statement.setString(2,mobile);
+    statement.setString(3,password);
+    statement.executeUpdate();
+
+    statement.close();
+    connection.close();
+
+    response.sendRedirect("index.jsp");
 %>
 </body>
 </html>
